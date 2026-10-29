@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#8b2be2">
+<title>Desi Social — Photo & Video Community</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Desi Social home"><span class="brandmark">D</span><span>Desi Social</span></a>
+  <div class="top-actions"><button id="langBtn" class="ghost" type="button">हिंदी / EN</button><button id="openAuth" class="primary small" type="button" data-i18n="signIn">Sign in</button></div>
+</header>
+<main class="layout">
+  <aside class="sidebar panel">
+    <div class="profile-mini"><div class="avatar">DS</div><div><strong id="sideName">Guest User</strong><small id="sideHandle">@guest</small></div></div>
+    <nav>
+      <button class="navitem active" data-view="feed"><span>⌂</span><span data-i18n="home">Home</span></button>
+      <button class="navitem" data-view="explore"><span>⌕</span><span data-i18n="explore">Explore</span></button>
+      <button class="navitem" data-view="create"><span>＋</span><span data-i18n="create">Create post</span></button>
+      <button class="navitem" data-view="profile"><span>◎</span><span data-i18n="profile">Profile</span></button>
+      <button class="navitem" data-view="admin"><span>⚑</span><span>Admin demo</span></button>
+    </nav>
+    <div class="notice"><strong>Prototype / डेमो</strong><p data-i18n="localNotice">Posts and actions are saved only in this browser.</p></div>
+  </aside>
+  <section class="content">
+    <section id="authBanner" class="banner">
+      <div><strong data-i18n="joinTitle">Share your world.</strong><p data-i18n="joinText">Photos, short videos and local stories — made for India.</p></div>
+      <button id="bannerAuth" class="primary" type="button" data-i18n="createAccount">Create account</button>
+    </section>
+    <section id="stories" class="stories panel" aria-label="Stories">
+      <div class="story"><div class="storyring add">＋</div><small data-i18n="yourStory">Your story</small></div>
+      <div class="story"><div class="storyring">🌻</div><small>Riya</small></div>
+      <div class="story"><div class="storyring">🎧</div><small>DJ Aman</small></div>
+      <div class="story"><div class="storyring">🍲</div><small>Foodie Bihar</small></div>
+      <div class="story"><div class="storyring">📸</div><small>Travel India</small></div>
+    </section>
+    <section id="createPanel" class="panel create-panel hidden">
+      <div class="section-head"><div><h1 data-i18n="newPost">Create a post</h1><p data-i18n="postHelp">Choose a photo or video and add a caption.</p></div><button class="ghost closeCreate" type="button">✕</button></div>
+      <form id="postForm">
+        <label class="filedrop"><span class="upload-icon">＋</span><strong data-i18n="chooseMedia">Choose photo or video</strong><small>JPG, PNG, WEBP, MP4, WEBM · demo preview only</small><input id="mediaInput" type="file" accept="image/*,video/mp4,video/webm" required></label>
+        <div id="mediaPreview" class="media-preview hidden"></div>
+        <label for="caption" data-i18n="caption">Caption</label><textarea id="caption" maxlength="500" placeholder="Aaj ka moment… / Today's moment…" rows="3"></textarea>
+        <button class="primary full" type="submit" data-i18n="publish">Publish post</button>
+      </form>
+      <p class="hint">⚠️ Demo: publishing saves a local preview, not a cloud upload.</p>
+    </section>
+    <section id="feedView">
+      <div class="section-head"><div><h1 data-i18n="feedTitle">Your feed</h1><p data-i18n="feedSub">Discover moments from your community.</p></div><button id="quickCreate" class="primary" type="button">＋ <span data-i18n="post">Post</span></button></div>
+      <div id="feed" class="feed"></div>
+    </section>
+    <section id="profileView" class="panel hidden">
+      <div class="profile-hero"><div class="avatar big">DS</div><div><h1 id="profileName">Guest User</h1><p id="profileHandle">@guest</p><p><b id="postCount">0</b> posts · <b id="followerCount">0</b> followers</p></div></div>
+      <button id="editProfile" class="secondary" type="button">Edit demo profile</button><div id="profilePosts" class="profile-grid"></div>
+    </section>
+    <section id="exploreView" class="hidden">
+      <div class="section-head"><div><h1 data-i18n="explore">Explore</h1><p>Popular demo posts / लोकप्रिय पोस्ट</p></div></div>
+      <div id="exploreFeed" class="feed"></div>
+    </section>
+    <section id="adminView" class="panel hidden">
+      <div class="section-head"><div><h1>Admin panel — demo</h1><p>Moderation queue stored in this browser only.</p></div><span class="pill warn">NOT SECURE ADMIN AUTH</span></div>
+      <div class="admin-warning">This screen is a UI prototype. It does not prove admin identity. Do not use it to moderate real users until server-side role checks are enabled.</div>
+      <div id="reportsList"></div>
+    </section>
+  </section>
+  <aside class="rightbar">
+    <section class="panel trend"><h3 data-i18n="trending">Trending in India</h3><p>#DesiCreators <small>2.4k posts</small></p><p>#FoodAndCulture <small>1.8k posts</small></p><p>#MyIndia <small>986 posts</small></p><p>#ReelsIndia <small>762 posts</small></p></section>
+    <section class="panel safety"><h3>Safety first / सुरक्षा</h3><p>Report harmful content. Never share passwords, OTPs or private details.</p><p class="tiny">Demo only · no real account protection yet.</p></section>
+    <footer>© 2026 Desi Social<br><a href="#" id="privacyLink">Privacy (draft)</a> · <a href="#" id="termsLink">Terms (draft)</a></footer>
+  </aside>
+</main>
+<div id="authModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal-card"><button id="closeAuth" class="close" aria-label="Close" type="button">✕</button><div class="brand modal-brand"><span class="brandmark">D</span><span>Desi Social</span></div><h2 id="authTitle">Welcome / स्वागत है</h2><p class="muted">Email sign-in UI demo — no credentials are sent or stored.</p>
+    <form id="authForm"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com" required><label for="displayName">Display name</label><input id="displayName" maxlength="40" placeholder="Your name / आपका नाम" required><button class="primary full" type="submit">Continue (demo)</button></form><p class="hint">Do not enter a real password. This demo does not ask for one.</p>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body></html>
